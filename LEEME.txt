@@ -1,0 +1,23 @@
+ATLAS DE DATOS V8.1 — CORRECCIÓN DE CONEXIÓN
+
+Importante: si solo arrastras index.html a Netlify, se verá la web pero NO se publicará atlas-proxy.
+
+MÉTODO RECOMENDADO: GIT
+1. Extrae el ZIP y carga su CONTENIDO a la raíz de un repositorio de GitHub.
+2. Netlify > Add new project > Import an existing project > conecta GitHub y selecciona el repositorio.
+3. La compilación se indica en netlify.toml (npm run build; dist; netlify/functions).
+4. Verifica en Netlify > Logs & metrics > Functions que aparezca atlas-proxy.
+5. Abre https://TU-SITIO.netlify.app/.netlify/functions/atlas-proxy?source=health
+   Debe responder JSON: {"ok":true,"service":"atlas-proxy","version":"8.1", ...}.
+6. En el buscador prueba "masa muscular" > Encontrar datasets > Buscar datasets.
+7. En caso de fallo: "Conexión y diagnóstico de las APIs" > Copiar diagnóstico.
+
+ALTERNATIVA: NETLIFY CLI (requiere iniciar sesión previamente)
+- Desde la carpeta descomprimida: npm run build
+- Luego: npx netlify deploy --prod
+- La CLI debe informar que subió funciones; comprueba el endpoint de salud.
+
+Una publicación manual por arrastrar/soltar puede no ejecutar la compilación de funciones.
+La versión V8.1 intenta usar APIs directamente si la función no está disponible; algunas APIs podrían
+bloquear conexiones desde el navegador (CORS) o requerir credenciales.
+No se inventan datasets ni se garantiza acceso a bases privadas.

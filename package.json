@@ -1,0 +1,8 @@
+{
+  "name": "atlas-de-datos-netlify",
+  "version": "8.1.0",
+  "private": true,
+  "description": "Atlas de Datos con búsqueda de datasets y diagnóstico de APIs",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "engines": { "node": ">=18" }
+}
